@@ -1,3 +1,10 @@
+"""
+Persistent Sheaf Laplacian (PSL)
+
+Copyright (c) 2026 Mushal Zia
+
+"""
+
 #!/bin/bash --login
 #SBATCH --job-name=run_smiles
 #SBATCH --array=0-268
