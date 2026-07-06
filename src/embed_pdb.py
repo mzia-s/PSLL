@@ -1,4 +1,12 @@
 #!/usr/bin/env python3
+
+"""
+Persistent Sheaf Laplacian (PSL)
+
+Copyright (c) 2026 Mushal Zia
+
+"""
+
 import os
 import sys
 import torch
