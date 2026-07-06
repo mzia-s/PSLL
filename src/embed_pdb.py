@@ -26,11 +26,11 @@ device = "cuda" if torch.cuda.is_available() else "cpu"
 model = model.to(device)
 
 # Paths
-csv_path = "/mnt/home/ziamusha/PDBbind_datasets/v2016_fasta/v2016_fasta.csv"
-#csv_path = "/mnt/home/ziamusha/PDBbind_datasets/v2007_fasta_test/v2007_fasta_test.csv"
-#output_dir = "/mnt/home/ziamusha/PDBbind_datasets/v2016_fasta/v2016_prot33"
-output_dir = "/mnt/scratch/ziamusha/v2016_fasta/v2016_prot33"
-#output_dir = "/mnt/home/ziamusha/PDBbind_datasets/v2007_fasta_test/v2007_prot33_test"
+csv_path = "/%%%%%%%%%%%%%%%/v2016_fasta.csv"
+#csv_path = "/%%%%%%%%%%%%%%%/v2007_fasta_test.csv"
+#output_dir = "%%%%%%%%%%%%%%%/v2016_prot33"
+output_dir = "/%%%%%%%%%%%%%%%/v2016_prot33"
+#output_dir = "/%%%%%%%%%%%%%%%/v2007_prot33_test"
 os.makedirs(output_dir, exist_ok=True)
 
 # Command-line args
@@ -100,12 +100,3 @@ for idx in range(start_idx, end_idx):
     np.save(out_path, embedding)
     print(f"Saved {out_path} | shape={embedding.shape}")
 
-#Pre-Cache the model
-'''
-source /mnt/home/ziamusha/PDBbind_datasets/v2007_fasta/venv_esm/bin/activate
-unset PYTHONPATH
-export PYTHONNOUSERSITE=1
-export TORCH_HOME=/mnt/home/ziamusha/PDBbind_datasets/v2007_fasta/torch-cache-t36
-mkdir -p "$TORCH_HOME"
-python -c "import esm; model, alphabet = esm.pretrained.esm2_t36_3B_UR50D(); print('t36 model cached')"
-'''
