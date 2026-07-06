@@ -1,3 +1,10 @@
+"""
+Persistent Sheaf Laplacian (PSL)
+
+Copyright (c) 2026 Mushal Zia
+
+"""
+
 #!/bin/bash --login
 #SBATCH --job-name=psl_v2013
 #SBATCH --nodes=1
