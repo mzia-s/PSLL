@@ -11,7 +11,7 @@ import pandas as pd
 def pqr_to_pqre(
     pdbid,
     suffix="protein",
-    base_dir="/mnt/home/ziamusha/PDBbind_datasets/v2007_AMBER_pqr",
+    base_dir="/%%%%%%%%%%%%%%%/v2007_AMBER_pqr",
     keep_hetatm=False,
     drop_hydrogens=True,
 ):
