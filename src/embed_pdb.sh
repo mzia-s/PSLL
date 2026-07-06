@@ -1,3 +1,10 @@
+""""
+Persistent Sheaf Laplacian (PSL)
+
+Copyright (c) 2026 Mushal Zia
+
+"""
+
 #!/bin/bash --login
 #SBATCH --job-name=esm_v2007_t33
 #SBATCH --constraint=amd24
