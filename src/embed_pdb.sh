@@ -12,23 +12,23 @@ Copyright (c) 2026 Mushal Zia
 #SBATCH --time=01:00:00
 #SBATCH --mem=15G
 #SBATCH --cpus-per-task=1
-#SBATCH --output=/mnt/scratch/ziamusha/v2007_fasta/logs/esm_%A_%a.out
-#SBATCH --error=/mnt/scratch/ziamusha/v2007_fasta/logs/esm_%A_%a.err
+#SBATCH --output=/%%%%%%%%%%%%%%%/esm_%A_%a.out
+#SBATCH --error=/%%%%%%%%%%%%%%%/esm_%A_%a.err
 
 set -euo pipefail
 
-LOGDIR=/mnt/scratch/ziamusha/v2007_fasta/logs
+LOGDIR=/%%%%%%%%%%%%%%%/logs
 mkdir -p "$LOGDIR"
 
 module purge
 module load Python/3.11.3-GCCcore-12.3.0
 
-source /mnt/home/ziamusha/PSL/venv_psl/bin/activate
+source /%%%%%%%%%%%%%%%/venv_psl/bin/activate
 unset PYTHONPATH
 export PYTHONNOUSERSITE=1
 
-export TORCH_HOME=/mnt/home/ziamusha/PSL/torch-cache-t33
-export XDG_CACHE_HOME=/mnt/scratch/ziamusha/.cache
+export TORCH_HOME=%%%%%%%%%%%%%%%/PSL/torch-cache-t33
+export XDG_CACHE_HOME=/%%%%%%%%%%%%%%%/.cache
 mkdir -p "$TORCH_HOME" "$XDG_CACHE_HOME"
 
 export OPENBLAS_CORETYPE=generic
