@@ -1,4 +1,3 @@
-````markdown
 # PSL: Persistent Sheaf Laplacian Learning for Protein-Ligand Binding Affinity Prediction
 
 ![Workflow Diagram](workflow.png)
@@ -443,4 +442,4 @@ https://doi.org/10.3934/fods.2024033
 - Replace all machine-specific absolute paths in the supplied scripts before running the code.
 - Store large datasets, pretrained checkpoints, and generated feature matrices using Git LFS, Zenodo, or another data repository when needed.
 - The `sheafbind.ipynb` notebook is retained as an exploratory development notebook and is not required for the main `PSL.py` feature-generation workflow.
-````
+
