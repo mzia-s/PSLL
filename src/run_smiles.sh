@@ -11,12 +11,12 @@ Copyright (c) 2026 Mushal Zia
 #SBATCH --time=00:30:00
 #SBATCH --mem=10G
 #SBATCH --cpus-per-task=1
-#SBATCH --output=/mnt/home/ziamusha/PDBbind_datasets/v2013_SMILES/logs/run_smiles_%A_%a.out
-#SBATCH --error=/mnt/home/ziamusha/PDBbind_datasets/v2013_SMILES/logs/run_smiles_%A_%a.err
+#SBATCH --output=%%%%%%%%%%%%%%%/run_smiles_%A_%a.out
+#SBATCH --error=%%%%%%%%%%%%%%%%/run_smiles_%A_%a.err
 
 set -euo pipefail
 
-BASE_DIR="/mnt/home/ziamusha/PDBbind_datasets/v2013_SMILES"
+BASE_DIR="%%%%%%%%%%%%%%%/PDBbind_datasets/v2013_SMILES"
 CSV_FILE="${BASE_DIR}/v2013_lp_smiles.csv"
 LOG_DIR="${BASE_DIR}/logs"
 OUT_DIR="${BASE_DIR}/v2013_smi_features"
@@ -27,7 +27,7 @@ mkdir -p "${LOG_DIR}" "${OUT_DIR}" "${TMP_DIR}"
 module purge
 module load Python/3.11.3-GCCcore-12.3.0
 
-cd /mnt/home/ziamusha/PretrainModels
+cd /%%%%%%%%%%%%%%%/PretrainModels
 
 CHUNK_SIZE=11
 START=$((SLURM_ARRAY_TASK_ID * CHUNK_SIZE))
