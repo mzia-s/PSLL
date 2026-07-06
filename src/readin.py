@@ -1,3 +1,9 @@
+""""
+Persistent Sheaf Laplacian (PSL)
+
+Copyright (c) 2026 Mushal Zia
+
+"""
 import os
 import pandas as pd
 
