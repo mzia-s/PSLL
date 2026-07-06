@@ -77,8 +77,6 @@ number of positive eigenvalues
 number of zero eigenvalues
 ```
 
-![PSL Representation](psl_representation.png)
-
 ---
 
 ## Prerequisites
