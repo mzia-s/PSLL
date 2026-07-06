@@ -471,8 +471,8 @@ def compute_block_features_for_pdbid(
 def main():
     parser = argparse.ArgumentParser(description="PSL feature generation (VR0 + Alpha1) for P-L only (ES/CS)")
 
-    parser.add_argument("--base_dir", default="/mnt/home/ziamusha/PDBbind_datasets/v2007")
-    parser.add_argument("--protein_pqr_dir", default="/mnt/home/ziamusha/PDBbind_datasets/PQR_AMBER_allproteinpdb_Xiang/all-pqrs")
+    parser.add_argument("--base_dir", default="/%%%%%%%%%%%%%%%/PDBbind_datasets/v2007")
+    parser.add_argument("--protein_pqr_dir", default="/%%%%%%%%%%%%%%%")
     parser.add_argument("--protein_pqr_suffix", default="protein")
 
     parser.add_argument("--schema", default="ES", choices=["ES", "CS", "BOTH"])
