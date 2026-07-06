@@ -126,13 +126,13 @@ OpenMM
 RDKit
 ```
 
-PDB2PQR is used to generate charged protein PQR files. ChimeraX and the additional preprocessing tools are optional and are included for structure preparation and exploratory workflows.
+PDB2PQR is used to generate charged protein PQR files with AMBER forcefield. ChimeraX and the additional preprocessing tools are optional and are included for structure preparation and exploratory workflows.
 
 ### Installation
 
 ```bash
-git clone https://github.com/[your-github-username]/[repository-name].git
-cd [repository-name]
+git clone https://github.com/[mzia-s]/[PSL].git
+cd [PSL]
 
 python -m venv venv_psl
 source venv_psl/bin/activate
@@ -151,7 +151,7 @@ python -c "from readin import pqr_to_pqre, mol2_to_pqre; print('Input parsers ar
 
 ## Datasets
 
-The processed datasets, labels, protein sequences, ligand SMILES strings, and generated feature files used in this study will be included in this repository.
+The processed datasets, labels, protein sequences, ligand SMILES strings, and generated feature files used in this study can be downloaded from [PDBbind database](https://www.pdbbind.org.cn/).
 
 The PSL pipeline uses protein-ligand complexes from the PDBbind benchmark datasets.
 
@@ -215,8 +215,6 @@ Ligand: charged MOL2 file
 ```
 
 Protein PQR files can be generated using PDB2PQR with the Amber force field. The same charge-generation protocol should be used for all structures in a dataset.
-
-The included ChimeraX and preprocessing scripts contain machine-specific paths. Update these paths before running them on a different system.
 
 ---
 
@@ -436,10 +434,4 @@ https://doi.org/10.3934/fods.2024033
 ```
 
 ---
-
-## Notes
-
-- Replace all machine-specific absolute paths in the supplied scripts before running the code.
-- Store large datasets, pretrained checkpoints, and generated feature matrices using Git LFS, Zenodo, or another data repository when needed.
-- The `sheafbind.ipynb` notebook is retained as an exploratory development notebook and is not required for the main `PSL.py` feature-generation workflow.
 
