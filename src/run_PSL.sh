@@ -12,22 +12,19 @@ Copyright (c) 2026 Mushal Zia
 #SBATCH --cpus-per-task=1
 #SBATCH --mem=16G
 #SBATCH --time=00:40:00
-#SBATCH --output=/mnt/home/ziamusha/PSL/psl_features/psl_v2013_CS/logs/psl_%A_%a.out
-#SBATCH --error=/mnt/home/ziamusha/PSL/psl_features/psl_v2013_CS/logs/psl_%A_%a.err
+#SBATCH --output=/%%%%%%%%%%%%%%%/psl_%A_%a.out
+#SBATCH --error=/%%%%%%%%%%%%%%%/psl_%A_%a.err
 #SBATCH --array=0-268
 
 set -euo pipefail
 
 PY="/mnt/home/ziamusha/PSL/PSL.py"
 
-#BASE_DIR="/mnt/home/ziamusha/PDBbind_datasets/v2007"
-BASE_DIR="/mnt/home/ziamusha/PDBbind_datasets/v2013-refined"
-PROTEIN_PQR_DIR="/mnt/home/ziamusha/PDBbind_datasets/PQR_AMBER_allproteinpdb/all-pqrs"
-#PROTEIN_PQR_DIR="/mnt/home/ziamusha/PDBbind_datasets/PQR_AMBER_pocketpdb/pqr_2007"
-#PROTEIN_PQR_DIR="/mnt/home/ziamusha/PDBbind_datasets/v2007_AMBER_pqr"
+#BASE_DIR="/%%%%%%%%%%%%%%%/PDBbind_datasets/v2007"
+PROTEIN_PQR_DIR="/%%%%%%%%%%%%%%%"
 PROTEIN_PQR_SUFFIX="protein"
 
-OUT_DIR="/mnt/home/ziamusha/PSL/psl_features/psl_v2013_CS"
+OUT_DIR="/%%%%%%%%%%%%%%%/psl_v2013_CS"
 
 mkdir -p "${OUT_DIR}/logs" "${OUT_DIR}"
 
