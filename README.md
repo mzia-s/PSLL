@@ -21,9 +21,9 @@ PSLL is a charge-aware multiscale spectral framework for protein-ligand binding 
 
 Persistent sheaf Laplacians extend persistent Laplacian theory by incorporating local non-geometric information into multiscale spectral analysis. In protein-ligand systems, each atom is associated with its partial charge, while its Cartesian coordinates define the underlying molecular geometry. PSL combines these quantities through charge-weighted restriction maps and constructs spectral operators over filtration-based molecular complexes.
 
-In this work, protein-ligand complexes are represented through two complementary PSL components. The first component is a zero-dimensional operator constructed from cross-interface protein-ligand edges only. It captures charge-weighted connectivity between protein and ligand atoms. The second component is a one-dimensional operator constructed from alpha-complex edges and triangular faces, encoding local charge-weighted geometric organization of the interaction-specific point cloud.
+In this work, protein-ligand complexes are represented through two complementary PSLL components. The first component is a zero-dimensional operator constructed from cross-interface protein-ligand edges only. It captures charge-weighted connectivity between protein and ligand atoms. The second component is a one-dimensional operator constructed from alpha-complex edges and triangular faces, encoding local charge-weighted geometric organization of the interaction-specific point cloud.
 
-PSL descriptors are calculated across multiple filtration thresholds for element-specific and category-specific protein-ligand interactions. These structural features are combined with ESM2 protein sequence embeddings and ligand SMILES embeddings to provide a unified molecular representation for binding affinity prediction.
+PSLL descriptors are calculated across multiple filtration thresholds for element-specific and category-specific protein-ligand interactions. These structural features are combined with ESM2 protein sequence embeddings and ligand SMILES embeddings to provide a unified molecular representation for binding affinity prediction.
 
 ---
 
@@ -54,7 +54,7 @@ This produces 36 category-specific protein-ligand interaction groups.
 
 ### Spectral Operators
 
-For each interaction group and filtration threshold, PSL computes the following two spectral operators:
+For each interaction group and filtration threshold, PSLL computes the following two spectral operators:
 
 | Operator | Construction | Interactions Included |
 |----------|--------------|-----------------------|
@@ -187,7 +187,7 @@ data/
     └── ...
 ```
 
-For each complex, the PSL feature-generation script requires:
+For each complex, the PSLL feature-generation script requires:
 
 ```text
 Ligand MOL2:
@@ -205,7 +205,7 @@ Protein PQR files must contain atomic coordinates, atomic partial charges, atom 
 
 ### I. Protein and Ligand Preparation
 
-Before PSL feature extraction, each complex must contain:
+Before PSLL feature extraction, each complex must contain:
 
 ```text
 Protein: charged PQR file
@@ -281,7 +281,7 @@ The optional `--save_spectra` argument saves individual eigenvalue spectra for i
 
 ### III. Batch PSL Feature Generation on HPCC
 
-The `run_PSL.sh` script is a Slurm array-job template for PSL feature generation.
+The `run_PSL.sh` script is a Slurm array-job template for PSLL feature generation.
 
 Before submission, update the following variables in `run_PSL.sh`:
 
@@ -415,7 +415,7 @@ All feature blocks must be aligned by PDB ID before concatenation. The resulting
 
 ## Citation
 
-If you use this code or the PSL representation in your work, please cite:
+If you use this code or the PSLL representation in your work, please cite:
 
 ```text
 [Authors]. Persistent Sheaf Laplacian Learning for Protein-Ligand Binding Affinity Prediction.
