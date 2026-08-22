@@ -1,10 +1,10 @@
-# PSL: Persistent Sheaf Laplacian Learning for Protein-Ligand Binding Affinity Prediction
+# PSLL: Persistent Sheaf Laplacian Learning for Protein-Ligand Binding Affinity Prediction
 
 ![Workflow Diagram](workflow.png)
 
 ---
 
-PSL is a charge-aware multiscale spectral framework for protein-ligand binding affinity prediction. It integrates atomic coordinates, partial charges, protein atom elements, protein residue categories, and ligand atom elements through persistent sheaf Laplacian representations. The resulting structural descriptors are combined with transformer-based protein sequence embeddings and ligand SMILES embeddings for machine learning prediction of protein-ligand binding affinity.
+PSLL is a charge-aware multiscale spectral framework for protein-ligand binding affinity prediction. It integrates atomic coordinates, partial charges, protein atom elements, protein residue categories, and ligand atom elements through persistent sheaf Laplacian representations. The resulting structural descriptors are combined with transformer-based protein sequence embeddings and ligand SMILES embeddings for machine learning prediction of protein-ligand binding affinity.
 
 ## Table of Contents
 
@@ -27,9 +27,9 @@ PSL descriptors are calculated across multiple filtration thresholds for element
 
 ---
 
-## PSL Representation
+## PSLL Representation
 
-### Element-Specific PSL Features
+### Element-Specific PSLL Features
 
 The element-specific scheme pairs protein atom elements with ligand atom elements.
 
@@ -39,7 +39,7 @@ The element-specific scheme pairs protein atom elements with ligand atom element
 
 This produces 36 element-specific protein-ligand interaction groups.
 
-### Category-Specific PSL Features
+### Category-Specific PSLL Features
 
 The category-specific scheme groups protein residues into four physicochemical categories and pairs each category with ligand atom elements.
 
@@ -216,9 +216,9 @@ Protein PQR files can be generated using PDB2PQR with the Amber force field. The
 
 ---
 
-### II. Generation of PSL Features
+### II. Generation of PSLL Features
 
-The main PSL feature-generation script is:
+The main PSLL feature-generation script is:
 
 ```text
 PSL.py
