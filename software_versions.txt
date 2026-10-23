@@ -1,0 +1,56 @@
+PSLL: Persistent Sheaf Laplacian Learning for Protein-Ligand Binding Affinity Prediction
+Software environment and reproducibility notes
+
+Environment
+  Python 3.11.3 (HPCC module Python/3.11.3-GCCcore-12.3.0)
+  Operating system: Linux (SLURM cluster); feature generation and training on CPU
+
+Packages (pip freeze of the feature-generation and training environment)
+  gudhi          3.11.0    Vietoris-Rips and alpha complexes (simplex trees, filtration values)
+  numpy          1.26.4    charge-weighted incidence matrices and eigenvalues (numpy.linalg.eigvalsh)
+  scipy          1.17.1    Pearson correlation (scipy.stats.pearsonr)
+  pandas         2.3.0     PQR / mol2 parsing, feature tables
+  scikit-learn   1.7.0     GradientBoostingRegressor, StandardScaler
+  fair-esm       2.0.0     ESM-2 protein embeddings
+  torch          2.1.2+cpu
+  pdb2pqr        3.7.1     protein partial charges (AMBER force field)
+
+Ligand fingerprints
+  Publicly released BT-FP code (bt_pro/generate_bt_fps.py) with the pretrained checkpoint
+  chembl27_pubchem_zinc_512 (Chen, Zheng, Wei, Pan, J. Phys. Chem. Lett. 2021, 12, 10793-10801).
+  The 512-dimensional descriptor is the final-layer hidden state of the first (<s>) token.
+
+Protein embeddings
+  Checkpoint esm2_t33_650M_UR50D, representation layer 33, mean over residue positions
+  (beginning- and end-of-sequence tokens excluded), no fine-tuning, no truncation.
+  Sequence: RCSB FASTA record of the entry; first protein chain for multi-chain entries.
+
+Partial charges
+  Protein: PDB2PQR 3.7.1, AMBER force field; hydrogens removed after charge assignment,
+  no redistribution of hydrogen charges; HETATM records excluded.
+  Ligand: Gasteiger-Huckel charges from the PDBbind mol2 files.
+
+Random seeds
+  0, 1, ..., 19 (random_state of GradientBoostingRegressor; one SLURM array task per seed).
+
+Gradient boosting hyperparameters (Table 4 of the paper)
+  ES-PSLL      n_estimators 25000, learning_rate 0.001, subsample 0.3
+  CS-PSLL      n_estimators 20000, learning_rate 0.002, subsample 0.8
+  t33+SMILES   n_estimators 30000, learning_rate 0.002, subsample 0.8
+  All models:  max_depth 7, min_samples_split 5, loss squared_error, max_features sqrt
+  Consensus:   PSLL(ES, CS) = 0.5 ES + 0.5 CS; final = 0.3 ES + 0.3 CS + 0.4 t33+SMILES
+
+Scripts
+  readin.py        PQR and mol2 parsing (coordinates, elements, charges, residue names)
+  PSL.py           PSLL features: cross-interface VR dimension-0 and alpha dimension-1
+                   operators, 12 filtration values (1-12 A), 9 spectral statistics per block
+  run_PSL.sh       SLURM array job for feature generation (ES cutoff 12 A, CS cutoff 10 A)
+  embed_pdb.py, embed_pdb.sh    ESM-2 embeddings
+  run_smiles.sh    BT-FP ligand fingerprints
+  run_gbrt.py, gbrt_array.sh    training on the refined set, scoring on the core set, 20 seeds,
+                   aggregation of scores and seed-averaged predictions
+  PSL_v2007.ipynb  consensus of the three models and final metrics
+  vXXXX_refine_list.csv, vXXXX_core_list.csv   training / test partitions (PDB codes and pK labels)
+
+Data
+  PDBbind v2007, v2013 and v2016 refined and core sets, https://www.pdbbind-plus.org.cn/
